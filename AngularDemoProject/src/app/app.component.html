@@ -1,6 +1,9 @@
 <app-header></app-header>
 <div class="d-flex">
-  <app-sidebar></app-sidebar>
-  <app-content></app-content>
+  <div class="w-25">
+    <app-sidebar></app-sidebar>
+  </div>
+  <div class="w-75">
+  <router-outlet></router-outlet>
 </div>
-<!-- <app-login></app-login> -->
+</div>

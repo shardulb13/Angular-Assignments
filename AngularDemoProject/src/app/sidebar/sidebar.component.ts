@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+// import { RegisterComponent } from '../customermodule/register/register.component';
 
 @Component({
   selector: 'app-sidebar',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidebarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
+  }
+
+  onclick(){
+    this.router.navigate(['blogs']);
+  }
+
+  register(){
+    this.router.navigate(['register']);
   }
 
 }

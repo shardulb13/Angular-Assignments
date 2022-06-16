@@ -7,13 +7,11 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="d-inline-block bg-dark  vh-100">
-        <div class="sidebar list-group mx-3 mt-4">
-            <a href="#" class="text-white mb-3">Home</a>
-            <a href="#" class="text-white mb-3">About</a>
-            <a href="#" class="text-white mb-3">Service</a>
-            <a href="#" class="text-white mb-3">Blogs</a>
-            <a href="#" class="text-white mb-3">Contact</a>
+    <div class="bg-dark">
+        <div class="sidebar list-group pt-5">
+            <a (click)="onclick()" class="text-white text-center mt-3 mb-3">Blogs</a>
+            <a routerLink= "login" class="text-white text-center mt-3 mb-3">Login</a>
+            <a (click)="register()" class="text-white text-center mt-3 mb-3">Register</a>
         </div>
     </div>
 </body>
