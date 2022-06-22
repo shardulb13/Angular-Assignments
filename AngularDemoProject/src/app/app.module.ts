@@ -7,13 +7,15 @@ import { HeaderComponent } from './header/header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { ContentComponent } from './content/content.component';
 import { CustomermoduleModule } from './customermodule/customermodule.module';
+import { MaincontentComponent } from './maincontent/maincontent.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     SidebarComponent,
-    ContentComponent
+    ContentComponent,
+    MaincontentComponent
   ],
   imports: [
     BrowserModule,

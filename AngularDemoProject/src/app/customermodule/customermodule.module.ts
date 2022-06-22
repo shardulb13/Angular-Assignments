@@ -15,6 +15,7 @@ import { RegisterComponent } from './register/register.component';
     CommonModule,
     CustomerRoutingModule
   ],
-  
+  exports:[LoginComponent,
+  ]
 })
 export class CustomermoduleModule { }
