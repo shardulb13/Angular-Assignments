@@ -1,0 +1,27 @@
+<div class="container p-5 mx-5">
+    <h2>Record table</h2>
+    <table class="table text-center table-bordered ms-5 mt-2">
+        <thead>
+            <tr>
+                <th>Srno</th>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Email</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let data of tableData let i = index">
+                <td>{{i+1}}</td>
+                <td>{{data.firstname}}</td>
+                <td>{{data.lastname}}</td>
+                <td>{{data.email}}</td>
+                <td>
+                    <button class="btn btn-secondary"(click)='edituser(data)'>Edit</button>
+                    <button class="btn btn-danger mx-2" (click)="deleteRow(i)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <h1>{{tableData.firstname}}</h1>
+</div>
