@@ -1,0 +1,21 @@
+<button class="btn btn-secondary mt-3 mb-3 mx-2 float-end" (click)="hide()">{{hiddentext}} Phoneno</button>
+<table class="table mt-5">
+    <thead>
+      <tr>
+        <th scope="col">Firstname</th>
+        <th scope="col">Lastname</th>
+        <th scope="col">Zip</th>
+        <th scope="col" *ngIf="click">Phone no</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let arr_person of person">
+            <!-- <td *ngIf="arr_person.firstname?.length<4">{{arr_person.firstname}}</td> -->
+            <td *ngIf="(arr_person.firstname.length > 4)" appDirectiveDemo>{{arr_person.firstname}}<td *ngIf="(arr_person.firstname.length <= 4)">{{arr_person.firstname}}
+            </td>
+            <td [ngStyle]="(arr_person.lastname[0] =='m'|| arr_person.lastname[0] =='M' || arr_person.lastname[0] =='c'|| arr_person.lastname[0] =='C' || arr_person.lastname[0] == 'd' || arr_person.lastname[0]=='D') ? list:''">{{arr_person.lastname}}</td>
+            <td>{{arr_person.zip}}</td>
+            <td *ngIf="click" >{{arr_person.phone_no}}</td>
+        </tr>
+    </tbody>
+  </table>
