@@ -6,7 +6,6 @@
     <title>Document</title>
   </head>
   <body>
-    <div class="container-fluid">
       <h1 class="text-center">Manage Expenses 2022</h1>
       <!-- <button class="btn btn-primary m-2">Jan <span class="text-black fw-bold">Total Expense: {{janTotalExpense}}/-</span></button>
       <button class="btn btn-secondary m-2">Feb <span class="text-black fw-bold">Total Expense: {{febTotalExpense}}/-</span></button>
@@ -22,7 +21,6 @@
             </div>
         </div>
       </div>
-    </div>
     <div class="container-fluid">
       <table class="table table-bordered text-center border-secondary">
         <thead>
@@ -63,7 +61,7 @@
               <input type="number" name="amount" class="form-control" placeholder="amount" [(ngModel)]='details_arr.amount' required>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-primary"(click)="addDetails()" (click)="matchmonth()"  data-bs-dismiss="modal">
+            <button type="button" class="btn btn-primary"(click)="addExpenses()" (click)="matchmonth()"  data-bs-dismiss="modal">
             Add Details
             </button>
             <button type="button" class="btn btn-danger"(click)='reset()'>Reset</button>

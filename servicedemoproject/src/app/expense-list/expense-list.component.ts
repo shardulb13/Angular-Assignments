@@ -31,14 +31,13 @@ export class ExpenseListComponent implements OnInit {
 
   }
   
-  addDetails(){
+  addExpenses(){
     if(this.details_arr.name == null || this.details_arr.date == null && this.details_arr.amount == null){
       alert("All fields are mandatory");
     }
     else{
     this.expense_service.addExpense(this.details_arr.name, this.details_arr.date, this.details_arr.amount);
     console.log(this.details_arr);
-    this.details_arr.sort(this.details_arr.date);
     }
   }
 
@@ -65,7 +64,6 @@ export class ExpenseListComponent implements OnInit {
       }
     }   
   }
-  
   // jandate(){
   //   // this.details_arr.date = new Date().getMonth();
   //   // console.log("month:",this.details_arr.date);
