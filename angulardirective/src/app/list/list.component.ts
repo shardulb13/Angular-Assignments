@@ -12,7 +12,7 @@ export class ListComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  @Input('parentdata') tableData :any;
+  @Input('parentdata') tableData :any =[] ;
 
   deleteRow(i:any){
     this.tableData.splice(i,1);

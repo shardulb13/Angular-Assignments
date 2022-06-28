@@ -2,11 +2,11 @@
     <h2>Fill in the Details</h2>
    
         <label for="firstname" class="form-label">Firstname</label>
-        <input type="text" name="fname" class="form-control" value={{edit_arr.firstname}}  placeholder="firstname" [(ngModel)]="employee.firstname">
+        <input type="text" id="f" name="fname" class="form-control" value={{edit_arr.firstname}}  placeholder="firstname" [(ngModel)]="employee.firstname">
         <label for="lastname" class="form-label mt-2">Lastname</label>
-        <input type="text" name="lname" class="form-control" value={{edit_arr.lastname}}  placeholder="Lastname" [(ngModel)]="employee.lastname">
+        <input type="text" id="l" name="lname" class="form-control" value={{edit_arr.lastname}}  placeholder="Lastname" [(ngModel)]="employee.lastname">
         <label for="email" class="form-label mt-2">Email</label>
-        <input type="email" name="email" class="form-control" value={{edit_arr.email}} placeholder="Email" [(ngModel)]="employee.email">
+        <input type="email" id="e" name="email" class="form-control" value={{edit_arr.email}} placeholder="Email" [(ngModel)]="employee.email">
         <button type="button" class="btn btn-primary mt-2" (click)="addDetails()">Add Values</button> 
         <button type="button" class="btn btn-secondary mt-2 mx-2" (click)="update()">Update</button> 
 </div>

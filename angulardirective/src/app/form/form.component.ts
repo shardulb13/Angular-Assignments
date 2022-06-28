@@ -31,7 +31,7 @@ export class FormComponent implements OnInit {
   new_emp_arr:any=[];
   addDetails(){
     // var abc = this.new_emp_arr.push(this.employee);
-    console.log(this.new_emp_arr.push(this.employee))
+    console.log(this.new_emp_arr.push(this.employee));
     this.sendData.emit(this.new_emp_arr);
     this.employee=[];
   }
