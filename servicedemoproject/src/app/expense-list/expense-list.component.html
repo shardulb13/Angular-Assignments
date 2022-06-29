@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  </head>
+  <body>
+      <h1 class="text-center">Manage Expenses 2022</h1>
+      <!-- <button class="btn btn-primary m-2">Jan <span class="text-black fw-bold">Total Expense: {{janTotalExpense}}/-</span></button>
+      <button class="btn btn-secondary m-2">Feb <span class="text-black fw-bold">Total Expense: {{febTotalExpense}}/-</span></button>
+      <button class="btn btn-success m-2">March <span class="text-black fw-bold">Total Expense: {{marchTotalExpense}}/-</span></button>
+      <button class="btn btn-danger m-2">April <span class="text-black fw-bold">Total Expense: {{aprilTotalExpense}}/-</span></button>
+      <button class="btn btn-info m-2">May <span class="text-black fw-bold">Total Expense: {{mayTotalExpense}}/-</span></button>
+      <button class="btn btn-warning m-2">June <span class="text-black fw-bold">Total Expense: {{juneTotalExpense}}/-</span></button> -->
+      <div class="container-fluid custom-class">
+        <div *ngFor="let months of monthArray">
+            <div class="card mx-1 my-2 text-center">
+                <h5 class="card-head">{{months.name}}</h5>
+                <p class="card-body"><strong>Total Expenses:</strong> {{months.value}} /-</p>
+            </div>
+        </div>
+      </div>
+    <div class="container-fluid">
+      <table class="table table-bordered text-center border-secondary">
+        <thead>
+            <tr>
+              <th>Sr.no</th>
+              <th>Expenses</th>
+              <th>Date</th>
+              <th>Amount</th>
+              <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let data of expenses; let i = index" >
+              <td>{{i+1}}</td>
+              <td>{{data.name}}</td>
+              <td>{{data.date}}</td>
+              <td>{{data.amount}}</td>
+              <td><button class="btn btn-danger" (click)="deleteExpense(i)">Delete</button></td>
+            </tr>
+        </tbody>
+      </table>
+      <button class="btn btn-success float-end" data-bs-toggle="modal" data-bs-target="#formModal">Add Expenses</button>
+    </div>
+    
+    <!-- Form Modal -->
+    <div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="formModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4>Fill Details</h4>
+          </div>
+          <div class="modal-body">
+              <label for="expense_name" class="form-label">Expense_name:</label>
+              <input type="text" name="expense_name" class="form-control" placeholder="name"[(ngModel)]='details_arr.name' required>
+              <label for="date" class="form-label">Date:</label>
+              <input type="date" name="date" min="2022-01-01" max="2022-12-31" class="form-control" placeholder="date" [(ngModel)]='details_arr.date' required>
+              <label for="amount" class="form-label">Amount:</label>
+              <input type="number" name="amount" class="form-control" placeholder="amount" [(ngModel)]='details_arr.amount' required>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary"(click)="addExpenses()" (click)="matchmonth()"  data-bs-dismiss="modal">
+            Add Details
+            </button>
+            <button type="button" class="btn btn-danger"(click)='reset()'>Reset</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>  
+  </body>
+</html>
+
+

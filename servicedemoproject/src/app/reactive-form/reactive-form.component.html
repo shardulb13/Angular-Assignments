@@ -1,0 +1,21 @@
+<div class="container-fluid">
+    <h1>Register</h1>
+    <form [formGroup]="loginForm" (ngSubmit)="loginDetails()">
+        <h5>Basic info</h5>
+        <div class="employee-details d-flex">
+            <div class="employee col-6">
+                <label for="employee-number" class="form-label">Employee No:</label>
+                <input type="text"  placeholder="Enter Username" formControlName="username"><br> 
+                <label for="password" class="form-label">Password</label>
+                <input type="password" placeholder="Enter Password" formControlName="password">
+            </div>
+            <div class="employee-name">
+                <label for="firstname" class="form-label">Firstname:</label>
+                <input type="text"  placeholder="Enter Firstname" formControlName="username"><br> 
+                <label for="lastname" class="form-label">Lastname</label>
+                <input type="password" placeholder="Enter Password" formControlName="password">
+            </div>
+        </div>
+        <button class="btn btn-primary mt-3">Submit</button>
+    </form>
+</div>
