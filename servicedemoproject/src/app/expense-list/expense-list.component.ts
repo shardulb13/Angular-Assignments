@@ -47,7 +47,7 @@ export class ExpenseListComponent implements OnInit {
 
   deleteExpense(id:number)
   {
-    let date = new Date(this.details_arr.date).getMonth();
+    let date = new Date(this.expenses[id].date).getMonth();
     for (let i = 0; i < this.monthArray.length; i++) {
     if(this.monthArray[i].id == date){
       this.monthArray[i].value = this.monthArray[i].value - this.expenses[id].amount;
@@ -56,14 +56,14 @@ export class ExpenseListComponent implements OnInit {
     this.expense_service.deleteExpense(id);
   }
 
-  matchmonth(){
-    let date = new Date(this.details_arr.date).getMonth();
-    for (let i = 0; i < this.monthArray.length; i++) {
-    if(this.monthArray[i].id == date){
-      this.monthArray[i].value = this.monthArray[i].value + this.details_arr.amount;
-      }
-    }   
-  }
+    matchmonth(){
+      let date = new Date(this.details_arr.date).getMonth();
+      for (let i = 0; i < this.monthArray.length; i++) {
+      if(this.monthArray[i].id == date){
+        this.monthArray[i].value = this.monthArray[i].value + this.details_arr.amount;
+        }
+      }   
+    }
   // jandate(){
   //   // this.details_arr.date = new Date().getMonth();
   //   // console.log("month:",this.details_arr.date);
