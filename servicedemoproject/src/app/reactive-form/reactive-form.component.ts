@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { BloodGroup } from 'src/core/enum/bloodgroup';
+import { Tshirt } from 'src/core/enum/tshirt';
 
 @Component({
   selector: 'app-reactive-form',
@@ -7,10 +9,10 @@ import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@ang
   styleUrls: ['./reactive-form.component.scss']
 })
 export class ReactiveFormComponent implements OnInit {
+  TshirtSize = Tshirt;
+  bloodgroup = BloodGroup;
   registerForm: FormGroup = new FormGroup({});
-  workexp : FormGroup = new FormGroup({});
-  arr = [];
-   age = 0;
+  age = 0;
   constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
@@ -66,7 +68,6 @@ export class ReactiveFormComponent implements OnInit {
   {
     return this.registerForm.controls['addfields'] as FormArray;
   }
-  get ticketFormGroups() { return this.addfield.controls as FormGroup[]; }
 
   add()
   {
@@ -79,13 +80,10 @@ export class ReactiveFormComponent implements OnInit {
       todate:['', [Validators.required]],
       jobdesc:[''],
       relevance:[''],
-
   }));
   }
 
   ageCalculate(){
- 
-   
     let currentYear = new Date();
     let dob = new Date(this.registerForm.value.birthdate);
     let year = dob.getFullYear();
