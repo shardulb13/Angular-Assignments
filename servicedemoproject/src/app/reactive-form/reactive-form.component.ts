@@ -1,3 +1,5 @@
+import { ThisReceiver } from '@angular/compiler';
+import { i18nMetaToJSDoc } from '@angular/compiler/src/render3/view/i18n/meta';
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { BloodGroup } from 'src/core/enum/bloodgroup';
@@ -13,6 +15,7 @@ export class ReactiveFormComponent implements OnInit {
   bloodgroup = BloodGroup;
   registerForm: FormGroup = new FormGroup({});
   age = 0;
+  date! :string;
   constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
@@ -26,7 +29,7 @@ export class ReactiveFormComponent implements OnInit {
         dateOfJoining:['',Validators.required],
         location:['',Validators.required],
         salaryRevision:['',],
-        mobileNo:['',],
+        mobileNo:['',[Validators.minLength(10),Validators.maxLength(10), Validators.pattern("^[0-9]*$")]],
         othermail:['',],
         birthdate:['',],
         martialstatus:['',],
@@ -42,6 +45,10 @@ export class ReactiveFormComponent implements OnInit {
         residencePhone:['',],
         addfields:this.fb.array([]),
     });
+
+    this.date = new Date().toISOString().slice(0,10);
+    console.log(this.date);
+  
     // this.workexp = this.fb.group({
     //   previouscompanyname:['', [Validators.required]],
     //   jobtitle:['', [Validators.required]],
@@ -56,7 +63,7 @@ export class ReactiveFormComponent implements OnInit {
   get f() {  return this.registerForm.controls; }
  
   RegisterDetails(){
-    
+    this.registerForm.value.age = this.age;
     console.log(this.registerForm.value);
   }
 

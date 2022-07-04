@@ -3,7 +3,7 @@
     <form [formGroup]="registerForm" >
         <h5 >Basic info</h5>
         <div class="employee-details d-flex">
-            <div class="employee col-6 me-2">
+            <div class="employee col-lg-6 me-2">
                 <div>
                     <label for="employee-number" class="form-label">Employee No: <span class="asterick">*</span></label>
                     <input type="text" class="form-control"  placeholder="Enter Employee No" formControlName="employeeNo">
@@ -15,7 +15,7 @@
                     <input type="text" class="form-control" placeholder="Enter Middlename" formControlName="middlename">
                 </div>
             </div>
-            <div class="form-group col-6">
+            <div class="form-group col-lg-6">
                 <div>
                     <label for="firstname" class="form-label">Firstname:  <span class="asterick">*</span></label>
                     <input type="text" class="form-control"  placeholder="Enter Firstname" id="firstname" name="firstname" formControlName="firstname" required>
@@ -40,11 +40,11 @@
                 </div>
                 <div>
                     <label for="work-phone" class="form-label">Work Phone</label>
-                    <input type="number" class="form-control" placeholder="Enter Work Phone No" formControlName="workphone">
+                    <input type="number" class="form-control" placeholder="Enter Work Phone No" formControlName="workphone"><br>
                 </div>
                 <div>
                     <label for="joining-date" class="form-label">Date of Joining:  <span class="asterick">*</span></label>
-                    <input type="date" class="form-control" formControlName="dateOfJoining">
+                    <input type="date"  max="{{this.date}}" class="form-control" formControlName="dateOfJoining">
                     <span *ngIf="f['dateOfJoining']?.invalid && f['dateOfJoining']?.touched">Date of Joining is required</span><br>
                 </div>
             </div>
@@ -56,7 +56,7 @@
                 </div>
                 <div>
                     <label for="salary-revision" class="form-label">Salary Revision Due On</label>
-                    <input type="date" class="form-control" formControlName="salaryRevision">
+                    <input type="date" class="form-control" min="2023-01-01"  formControlName="salaryRevision">
                 </div>
             </div>
         </div>
@@ -65,15 +65,17 @@
             <div class="personal-info-1 col-6 me-2">
                 <div>
                     <label for="phone-no" class="form-label">Mobile Phone:</label>
-                    <input type="number" class="form-control"  placeholder="Enter Mobile No" formControlName="mobileNo">
+                    <input type="text" class="form-control"  placeholder="Enter Mobile No" formControlName="mobileNo">
+                    <span [hidden]="!f['mobileNo']?.errors?.['pattern']">Only Numbers allowed</span>&nbsp;
+                    <span *ngIf="f['mobileNo']?.errors?.['minlength'] || f['mobileNo']?.errors?.['maxlength']">Only 10 digits allowed</span><br>
                 </div>
                 <div>
                     <label for="other-mail" class="form-label">Other Email</label>
-                    <input type="email" class="form-control" placeholder="Enter Email" formControlName="othermail">
+                    <input type="email" class="form-control" placeholder="Enter Email" formControlName="othermail"><br> 
                 </div>
                 <div>
                     <label for="DOB" class="form-label">Birth Date</label>
-                    <input type="date" class="form-control" formControlName="birthdate" (change)="ageCalculate()">
+                    <input type="date" max="{{this.date}}" class="form-control" formControlName="birthdate" (change)="ageCalculate()"><br>
                 </div>
                 <div>
                     <label for="martial-status" class="form-label">Marital status</label>
@@ -81,7 +83,7 @@
                         <option value="deafult">Choose..</option>
                         <option value="single">Single</option>
                         <option value="married">Married</option>
-                    </select>
+                    </select><br>   
                 </div>
                 <div>
                     <label for="age" class="form-label">Age:</label>
@@ -91,11 +93,11 @@
             <div class="personal-info-2 col-6 me-2">
                 <div>
                     <label for="address" class="form-label">Address:</label>
-                    <input type="text" class="form-control" placeholder="Enter Address" formControlName="address">
+                    <input type="text" class="form-control" placeholder="Enter Address" formControlName="address"><br>
                 </div>
                 <div>
                     <label for="tags" class="form-label">Tags</label>
-                    <input type="text" class="form-control" formControlName="tags">
+                    <input type="text" class="form-control" formControlName="tags"><br>
                 </div>
                 <div>
                     <label for="tshirt-size" class="form-label">Current T Shirt size</label>
@@ -107,7 +109,7 @@
                         <!-- <option value="large">Large(L)</option>
                         <option value="medium">Medium(M)</option>
                         <option value="small">Small(S)</option> -->
-                    </select>
+                    </select><br>
                 </div>
                 <div>
                     <label for="blood-group" class="form-label">Blood Group</label>
@@ -157,21 +159,21 @@
                 <h5>Work Experience</h5>
                 <button class="btn btn-primary"  (click)="add()">Add(+)</button>
             </div>
-            <table class="table text-center table-bordered border-secondary mt-3"   >
+            <table class="table text-center table-bordered border-secondary mt-3" formArrayName="addfields"  >
                 <thead>
-                    <th>Previous Company Name</th>
-                    <th>Job Title</th>
-                    <th>From Date</th>
-                    <th>To Date</th>
+                    <th>Previous Company Name <span class="asterick">*</span></th>
+                    <th>Job Title <span class="asterick">*</span></th>
+                    <th>From Date <span class="asterick">*</span></th>
+                    <th>To Date <span class="asterick">*</span></th>
                     <th>Job Description</th>
                     <th>Relevance</th>
                 </thead>
-                <tbody formArrayName="addfields">
+                <tbody >
                     <tr *ngFor="let add of addfield.controls let i=index" [formGroupName]="i" >
-                        <td class="form-group"><input type="text" class="form-control"  placeholder="Enter Company name" formControlName="previouscompanyname"></td>
-                        <td class="form-group"><input type="text" class="form-control"  placeholder="Enter Job Title"formControlName="jobtitle"></td>
-                        <td class="form-group"><input type="date" class="form-control"  formControlName="fromdate"></td>
-                        <td class="form-group"><input type="date" class="form-control"  formControlName="todate"></td>
+                        <td class="form-group"><input type="text" class="form-control" placeholder="Enter Company name" formControlName="previouscompanyname"></td>
+                        <td class="form-group"><input type="text" class="form-control" placeholder="Enter Job Title"formControlName="jobtitle"></td>
+                        <td class="form-group"><input type="date" max="{{this.date}}" class="form-control"  formControlName="fromdate"></td>
+                        <td class="form-group"><input type="date" max="{{this.date}}" class="form-control"  formControlName="todate"></td>
                         <td class="form-group"><input type="text" class="form-control"  placeholder="Enter Job Description" formControlName="jobdesc"></td>
                         <td class="form-group"><select class="form-select" formControlName="relevance">
                             <option value="yes">Yes</option>
