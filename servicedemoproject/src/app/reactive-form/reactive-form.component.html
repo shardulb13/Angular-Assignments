@@ -73,7 +73,7 @@
                 </div>
                 <div>
                     <label for="DOB" class="form-label">Birth Date</label>
-                    <input type="date" class="form-control" formControlName="birthdate">
+                    <input type="date" class="form-control" formControlName="birthdate" (change)="ageCalculate()">
                 </div>
                 <div>
                     <label for="martial-status" class="form-label">Marital status</label>
@@ -85,7 +85,7 @@
                 </div>
                 <div>
                     <label for="age" class="form-label">Age:</label>
-                    <input type="number" class="form-control" name="age" placeholder="Enter Age" formControlName="age">
+                    <input type="number" class="form-control" name="age" value={{age}} placeholder="Enter Age" formControlName="age">
                 </div>
             </div>
             <div class="personal-info-2 col-6 me-2">

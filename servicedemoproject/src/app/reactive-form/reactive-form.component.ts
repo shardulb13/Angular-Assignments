@@ -10,6 +10,7 @@ export class ReactiveFormComponent implements OnInit {
   registerForm: FormGroup = new FormGroup({});
   workexp : FormGroup = new FormGroup({});
   arr = [];
+   age = 0;
   constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
@@ -39,14 +40,14 @@ export class ReactiveFormComponent implements OnInit {
         residencePhone:['',],
         addfields:this.fb.array([]),
     });
-    this.workexp = this.fb.group({
-      previouscompanyname:['', [Validators.required]],
-      jobtitle:['', [Validators.required]],
-      fromdate:['',[Validators.required]],
-      todate:['', [Validators.required]],
-      jobdesc:[''],
-      relevance:[''],
-    })
+    // this.workexp = this.fb.group({
+    //   previouscompanyname:['', [Validators.required]],
+    //   jobtitle:['', [Validators.required]],
+    //   fromdate:['',[Validators.required]],
+    //   todate:['', [Validators.required]],
+    //   jobdesc:[''],
+    //   relevance:[''],
+    // })
     
   }
   
@@ -65,10 +66,31 @@ export class ReactiveFormComponent implements OnInit {
   {
     return this.registerForm.controls['addfields'] as FormArray;
   }
+  get ticketFormGroups() { return this.addfield.controls as FormGroup[]; }
 
   add()
   {
-    this.addfield.push(this.workexp);
-    this.addfield.reset();  
+    // this.addfield.push(this.workexp);
+    // this.addfield.reset();  
+    this.addfield.push(this.fb.group({
+      previouscompanyname: ['', Validators.required],
+      jobtitle: ['', [Validators.required]],
+      fromdate:['',[Validators.required]],
+      todate:['', [Validators.required]],
+      jobdesc:[''],
+      relevance:[''],
+
+  }));
+  }
+
+  ageCalculate(){
+ 
+   
+    let currentYear = new Date();
+    let dob = new Date(this.registerForm.value.birthdate);
+    let year = dob.getFullYear();
+    let currentYearValue = currentYear.getFullYear()
+    this.age = currentYearValue-year;
+
   }
 }
