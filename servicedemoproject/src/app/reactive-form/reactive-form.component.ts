@@ -21,14 +21,16 @@ export class ReactiveFormComponent implements OnInit {
         employeeNo :['',[Validators.required, Validators.pattern("^[0-9]*$")]],
         firstname:['', [Validators.required, Validators.pattern("[a-zA-Z]+$")]],
         middlename: ['',],
-        lastname:['',[Validators.required, Validators.pattern("[a-zA-z]+$")]],    
-        department:['',Validators.required],
-        workphone:['',],
-        dateOfJoining:['',Validators.required],
-        location:['',Validators.required],
-        salaryRevision:['',],
+        lastname:['',[Validators.required, Validators.pattern("[a-zA-z]+$")]], 
+        workinfo: this.fb.group({
+          department:['',Validators.required],
+          workphone:['',],
+          dateOfJoining:['',Validators.required],
+          location:['',Validators.required],
+          salaryRevision:['',],
+        }),   
         mobileNo:['',[Validators.minLength(10),Validators.maxLength(10), Validators.pattern("^[0-9]*$")]],
-        othermail:['',],
+        othermail:['',[Validators.email]],
         birthdate:['',],
         martialstatus:['',],
         age:['',],
@@ -41,7 +43,9 @@ export class ReactiveFormComponent implements OnInit {
         expertise:['',],
         presentaddress:['',],
         residencePhone:['',],
-        addfields:this.fb.array([]),
+        addfields:this.fb.array([
+          
+        ]),
     });
 
     this.date = new Date().toISOString().slice(0,10);
@@ -59,6 +63,10 @@ export class ReactiveFormComponent implements OnInit {
   }
   
   get f() {  return this.registerForm.controls; }
+  get workinfo()
+  {
+    return this.registerForm.get('workinfo') as FormGroup;
+  }
  
   RegisterDetails(){
     this.registerForm.value.age = this.age;

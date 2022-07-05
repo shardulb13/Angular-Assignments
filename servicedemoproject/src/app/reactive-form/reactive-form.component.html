@@ -31,12 +31,12 @@
             </div>
         </div>
         <h5 class="mt-3">Work</h5>
-        <div class="work-info d-flex">
+        <div class="work-info d-flex" formGroupName="workinfo">
             <div class="work-info-1 col-6 me-2">
                 <div>
                     <label for="department" class="form-label">Department:  <span class="asterick">*</span></label>
                     <input type="text" class="form-control"  placeholder="Enter Department Name" formControlName="department">
-                    <span *ngIf="f['department']?.invalid && f['department']?.touched">Department is required</span><br>
+                    <span *ngIf="workinfo.controls['department']?.invalid && workinfo.controls['department']?.touched">Department is required</span><br>
                 </div>
                 <div>
                     <label for="work-phone" class="form-label">Work Phone</label>
@@ -45,14 +45,14 @@
                 <div>
                     <label for="joining-date" class="form-label">Date of Joining:  <span class="asterick">*</span></label>
                     <input type="date"  max="{{this.date}}" class="form-control" formControlName="dateOfJoining">
-                    <span *ngIf="f['dateOfJoining']?.invalid && f['dateOfJoining']?.touched">Date of Joining is required</span><br>
+                    <span *ngIf="workinfo.controls['dateOfJoining']?.invalid && workinfo.controls['dateOfJoining']?.touched">Date of Joining is required</span><br>
                 </div>
             </div>
             <div class="work-info-2 col-6">
                 <div>
                     <label for="Location" class="form-label">Location:  <span class="asterick">*</span></label>
                     <input type="text" class="form-control"  placeholder="Enter Location" formControlName="location">
-                    <span *ngIf="f['location']?.invalid && f['location']?.touched">Location is required</span><br>
+                    <span *ngIf="workinfo.controls['location']?.invalid && workinfo.controls['location']?.touched">Location is required</span><br>
                 </div>
                 <div>
                     <label for="salary-revision" class="form-label">Salary Revision Due On</label>
@@ -71,7 +71,8 @@
                 </div>
                 <div>
                     <label for="other-mail" class="form-label">Other Email</label>
-                    <input type="email" class="form-control" placeholder="Enter Email" formControlName="othermail"><br> 
+                    <input type="email" class="form-control" placeholder="Enter Email" formControlName="othermail">
+                    <span *ngIf="f['othermail']?.errors?.['email']">Must be a valid email address</span><br> 
                 </div>
                 <div>
                     <label for="DOB" class="form-label">Birth Date</label>
@@ -184,7 +185,7 @@
         </div>
 
        <div class="d-flex justify-content-center">
-           <button type="submit"(click)="RegisterDetails()" [disabled]="!registerForm.valid"  class="btn btn-primary mb-2 mt-3">Submit</button>
+           <button type="submit"(click)="RegisterDetails()" [disabled]="!registerForm.valid" class="btn btn-primary mb-2 mt-3">Submit</button>
            <button class="btn btn-danger mx-2 mt-3 mb-2" (click)="resetform()">Reset</button>
        </div>
     </form>
