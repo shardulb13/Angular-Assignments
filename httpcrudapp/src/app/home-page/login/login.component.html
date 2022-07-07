@@ -1,0 +1,29 @@
+<div class="container col-6 mt-5">
+    <h1>Login</h1>
+<form [formGroup]="LoginForm">
+    <div class="mb-4 ">
+        <label class="form-label">Username</label>
+        <input type="text" id="username" class="form-control" formControlName="username" />
+        <span *ngIf="form['username']?.errors?.['required'] && form['username']?.touched">Username required</span>
+    </div>
+    <div class="mb-4 ">
+        <label class="form-label" >Password</label>
+        <input type="password" id="pass" class="form-control" formControlName='password' />
+        <span *ngIf="form['password']?.errors?.['required'] && form['password']?.touched">Password required</span>
+        <span *ngIf="form['password']?.errors?.['pattern']">Password should contain at least One Uppercase, Lowercase, Symbol & Number</span>
+    </div>
+    <div class="row mb-4">
+      <div class="col-lg-4 d-flex">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" checked />
+          <label class="form-check-label"> Remember me </label>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <a href="#!">Forgot password?</a>
+      </div>
+    </div>
+    <button type="button" class="btn btn-primary" (click)="loginDetails()">Sign in</button>
+    <button type="button" class="btn btn-danger mx-3">Cancel</button>
+  </form>
+</div>

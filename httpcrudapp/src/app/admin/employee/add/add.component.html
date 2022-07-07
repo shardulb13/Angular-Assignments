@@ -1,0 +1,30 @@
+<div class="m-5 col-10 ms-auto">
+    <h2>Employee Form</h2>
+    <form [formGroup]="empform" >
+        <div>
+            <label for="firstname" class="form-label">Firstname</label>
+            <input type="text" class="form-control" placeholder="Firstname" formControlName="firstName">
+        </div>
+        <div>
+            <label for="lastname" class="form-label">Lastname</label>
+            <input type="text" class="form-control" placeholder="lastname" formControlName="lastName">
+        </div>
+        <div>
+            <label for="mobilenumber" class="form-label">Mobile Number</label>
+            <input type="text" class="form-control" placeholder="Mobile No" formControlName="mobileNumber">
+        </div>
+        <div>
+            <label for="bloodgroup" class="form-label">Blood Group</label>
+           <select name="bloodgroup" class="form-select" formControlName="bloodGroup">
+                <option value="default">choose</option>
+                <option value="b+">B+</option>
+                <option value="A+">A+</option>
+                <option value="O-">O-</option>
+           </select>
+        </div>
+
+        <div class="mt-2">
+            <button class="btn btn-success me-2" (click)="addEmployee()">Add Data</button>   
+        </div>
+    </form>
+</div>

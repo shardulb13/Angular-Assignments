@@ -1,0 +1,23 @@
+<div class="container">
+    <h5 class="text-center m-4">Data from JsonPlaceholder Api</h5>
+    <table class="table text-center table-bordered">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Post_ID</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Body</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let obj of data ">
+          <td>{{obj.id}}</td>
+          <td>{{obj.postId}}</td>
+          <td>{{obj.name}}</td>
+          <td>{{obj.email}}</td>
+          <td>{{obj.body}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
