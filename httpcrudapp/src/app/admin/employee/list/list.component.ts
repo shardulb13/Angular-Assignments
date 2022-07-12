@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { ModalComponent } from 'src/app/shared/modal/modal.component';
 import { EmployeeService } from 'src/core/services/employee.service';
 import { TokenService } from 'src/core/services/token.service';
 
@@ -11,6 +12,7 @@ import { TokenService } from 'src/core/services/token.service';
 export class ListComponent implements OnInit {
   employee_details:any=[];
   datalist:any=[];
+  @ViewChild(ModalComponent) modal!: ModalComponent;
   constructor(private empservice:EmployeeService, private tokenservice:TokenService, private route: Router) {
 }
 
@@ -27,29 +29,15 @@ export class ListComponent implements OnInit {
   }
   
   deleteEmployee(id:number){
-    this.empservice.deleteEmployee(id).subscribe(res=>{
-      location.reload();
-      console.log(res);
-      console.log(id);
-    })
+    this.modal.openPopup();
+    if(this.modal.clickYes == true){
+      this.empservice.deleteEmployee(id).subscribe(res=>{
+        console.log(res);
+        console.log(id);
+        this.ngOnInit();
+      })
+    }
   }
-
-
-  // senddata(){
-  //   for(let i=0; i<this.employee_details.length; i++){
-  //     // console.log("pushed data",this.employee_details[i]);
-  //     this.datalist.push(this.employee_details[i]);
-  //     console.log('datalist:', this.datalist);
-
-  //   }
-  // }
-
-//   onEdit(id:number){
-  
-//     this.empform.controls.id.setValue(this.employee_details.result[id].id);
-//     this.empform.controls.firstName.setValue(this.employee_details.result[id].firstName);
-//     this.empform.controls.lastName.setValue(this.employee_details.result[id].lastName);
-// }
   
 }
 

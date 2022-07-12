@@ -12,6 +12,7 @@ import {HttpClientModule} from '@angular/common/http'
 import { UserService } from 'src/core/services/user.service';
 import { UserComponent } from './user/user.component';
 import { AuthenticationService } from 'src/core/services/authentication.service';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -28,6 +29,8 @@ import { AuthenticationService } from 'src/core/services/authentication.service'
     HomePageRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
+    SharedModule,
+    
   ],
   providers:[UserService, AuthenticationService]
 })

@@ -1,8 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/core/services/authentication.service';
 import { TokenService } from 'src/core/services/token.service';
+
+
+
 
 @Component({
   selector: 'app-login',
@@ -11,6 +14,8 @@ import { TokenService } from 'src/core/services/token.service';
 })
 export class LoginComponent implements OnInit {
   LoginForm:FormGroup = new FormGroup({});
+  isAlert:boolean = false;
+  
  
   constructor(private fb: FormBuilder, private auth: AuthenticationService, private route: Router, private tokenService:TokenService) { }
 
@@ -37,5 +42,5 @@ export class LoginComponent implements OnInit {
       alert('Invalid Login Details')
     })
   }
-
+  
 }

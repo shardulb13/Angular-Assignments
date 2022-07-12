@@ -5,6 +5,8 @@ import { DashboardComponent } from '../admin/dashboard/dashboard.component';
 import { HeaderComponent } from './header/header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { AdminComponent } from './admin.component';
+import { HttpClientModule } from '@angular/common/http';
+import { EmployeeModule } from './employee/employee.module';
 
 
 
@@ -19,7 +21,9 @@ import { AdminComponent } from './admin.component';
   ],
   imports: [
     CommonModule,
-    AdminRoutingModule
+    AdminRoutingModule,
+    HttpClientModule,
+    EmployeeModule
   ]
 })
 export class AdminModule { }

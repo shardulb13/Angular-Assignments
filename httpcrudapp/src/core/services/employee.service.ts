@@ -11,23 +11,23 @@ export class EmployeeService {
   constructor(private httpClient: HttpClient, private tokenservice: TokenService) { }
 
   getEmployee(): Observable<any>{
-    const headers = {Authorization:`Bearer ${this.tokenservice.getToken()}`};
-    return this.httpClient.get(`${this.baseApiUrl}/Employee`,{headers})
+    // const headers = {Authorization:`Bearer ${this.tokenservice.getToken()}`};
+    return this.httpClient.get(`${this.baseApiUrl}/Employee`)
   }
   
   addEmployee(data:string):Observable<any>{
-    const headers = {Authorization:`Bearer ${this.tokenservice.getToken()}`};
-    return this.httpClient.post(`${this.baseApiUrl}/Employee`,data,{headers});
+    // const headers = {Authorization:`Bearer ${this.tokenservice.getToken()}`};
+    return this.httpClient.post(`${this.baseApiUrl}/Employee`,data);
   }
 
   updateEmployee(updatedata:string): Observable<any>{
-    const headers = {Authorization:`Bearer ${this.tokenservice.getToken()}`};
-    return this.httpClient.put(`${this.baseApiUrl}/Employee`,updatedata,{headers});
+    // const headers = {Authorization:`Bearer ${this.tokenservice.getToken()}`};
+    return this.httpClient.put(`${this.baseApiUrl}/Employee`,updatedata);
   }
 
   deleteEmployee(id:number):Observable<any>{
-    const headers = {Authorization:`Bearer ${this.tokenservice.getToken()}`};
-    return this.httpClient.delete(`${this.baseApiUrl}/Employee/${id}`,{headers})
+    // const headers = {Authorization:`Bearer ${this.tokenservice.getToken()}`};
+    return this.httpClient.delete(`${this.baseApiUrl}/Employee/${id}`)
   }
 
 }

@@ -14,7 +14,7 @@ export class AuthenticationService {
  }
 
   loginDetails(data:string){
-    const headers = { 'content-type': 'application/json'}
-    return this.httpClient.post<any>(`${this.baseApiUrl}/Login`,data, {'headers': headers});
+    // const headers = { 'content-type': 'application/json'}
+    return this.httpClient.post<any>(`${this.baseApiUrl}/Login`,data);
   }
 }
