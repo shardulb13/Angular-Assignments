@@ -1,0 +1,28 @@
+<div class="m-5 col-10 ms-auto">
+    <h2>Employee Form</h2>
+    <form [formGroup]="empform" >
+        <div>
+            <label for="id">ID</label>
+            <input type="text" placeholder="ID" class="form-control" formControlName="id">
+        </div>
+        <div>
+            <label for="firstname" class="form-label">Firstname</label>
+            <input type="text" class="form-control" placeholder="Firstname" formControlName="firstName">
+        </div>
+        <div>
+            <label for="lastname" class="form-label">Lastname</label>
+            <input type="text" class="form-control" placeholder="lastname" formControlName="lastName">
+        </div>
+        <div>
+            <label for="mobilenumber" class="form-label">Mobile No</label>
+            <input type="text" class="form-control" placeholder="Mobileno" formControlName="mobileNumber">
+        </div>
+        <div>
+            <label for="bloodgroup" class="form-label">BloodGroup</label>
+            <input type="text" class="form-control" placeholder="bloodgroup" formControlName="bloodGroup">
+        </div>
+        <div class="mt-2">
+            <button class="btn btn-success me-2" (click)="updateEmployee()">Update Data</button>   
+        </div>
+    </form>
+</div>
