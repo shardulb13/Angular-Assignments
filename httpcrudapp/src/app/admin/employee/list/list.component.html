@@ -22,7 +22,7 @@
                     <td>{{emp.mobileNumber}}</td>
                     <td>{{emp.bloodGroup}}</td>
                     <td>
-                        <button class="btn btn-info me-2" (click)="edit(emp.id)">Edit</button>
+                        <button class="btn btn-info me-2" (click)="edit(emp.id)" >Edit</button>
                         <button class="btn btn-danger"(click)="deleteEmployee(emp.id)">Delete</button>
                     </td>
                 </tr>
@@ -31,5 +31,4 @@
         </table>
     </div>
     <app-modal></app-modal>
-    <!-- <button class="btn btn-info me-2" (click)="senddata()">push</button> -->
 </div>

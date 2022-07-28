@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+// import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import { ListComponent } from 'src/app/admin/employee/list/list.component';
 
 @Component({
@@ -9,25 +9,25 @@ import { ListComponent } from 'src/app/admin/employee/list/list.component';
 })
 export class ModalComponent implements OnInit {
   @ViewChild(ListComponent) list!: ListComponent
-  clickYes:boolean=false;
-  clickNo:boolean=false;
-  constructor(private modalService: NgbModal) { }
-  ngOnInit(): void {
-  }
-
+  confirm:boolean = false;
   displayStyle = "none";
 
+  constructor() { }
+  ngOnInit(): void {
+  }
+  
   openPopup() {
     this.displayStyle = "block";
-
   }
 
-  okPopup() {
+  YesPopup() {
+    this.confirm = true;
     this.displayStyle = "none";
-    this.clickYes = true;
+    console.log("true value set");
   }
   closePopup() {
+    this.confirm = false;
     this.displayStyle = "none";
-    this.clickNo = true;
+    console.log("False value set");
   }
 }

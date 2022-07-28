@@ -11,33 +11,40 @@ import { TokenService } from 'src/core/services/token.service';
 })
 export class ListComponent implements OnInit {
   employee_details:any=[];
-  datalist:any=[];
   @ViewChild(ModalComponent) modal!: ModalComponent;
   constructor(private empservice:EmployeeService, private tokenservice:TokenService, private route: Router) {
 }
 
   ngOnInit(): void {
     this.empservice.getEmployee().subscribe(res =>{
-      console.log(res);
+      // console.log(res);
       this.employee_details = res.result;
-      console.log('this is listcomponent',this.employee_details);
     })
   }
 
   edit(id:number){
     this.route.navigate([`admin/employee/edit/${id}`]);
   }
-  
+  confirm:boolean = false;
+  cancel: boolean = false;
+
   deleteEmployee(id:number){
     this.modal.openPopup();
-    if(this.modal.clickYes == true){
+    console.log("Alert box Open");
+    if(this.modal.confirm == true){     
       this.empservice.deleteEmployee(id).subscribe(res=>{
-        console.log(res);
-        console.log(id);
-        this.ngOnInit();
+        console.log("Data deleted Successfully");
+        this.ngOnInit();     
+      },
+      error =>{
+        console.log("Error Occured")
       })
     }
+    // else{
+    //   console.log("Data not deleted");
+    // }
   }
+
   
 }
 
